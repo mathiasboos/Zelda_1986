@@ -1,0 +1,6 @@
+# Verification output (screenshots from tools/verify.js)
+.verify/
+
+# Editor and OS noise
+.DS_Store
+*.swp

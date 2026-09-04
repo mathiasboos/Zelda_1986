@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ashvale — The Sundered Sigil</title>
+<meta name="description" content="Ashvale: The Sundered Sigil — a top-down action adventure in the 1986 style. Original world, art and music.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main id="stage">
+  <canvas id="screen" width="256" height="240" tabindex="0"
+          aria-label="Ashvale: The Sundered Sigil — game screen"></canvas>
+  <div id="boot">LIGHTING THE LANTERN…</div>
+  <p id="keys">
+    <b>MOVE</b> arrows / WASD &nbsp;·&nbsp;
+    <b>BLADE</b> Z &nbsp;·&nbsp;
+    <b>ITEM</b> X &nbsp;·&nbsp;
+    <b>SUBSCREEN</b> Enter &nbsp;·&nbsp;
+    <b>SOUND</b> Tab
+  </p>
+</main>
+
+<!-- Loaded as classic scripts on purpose: ES modules are blocked by CORS on
+     file:// origins, and this has to run by opening the file directly. -->
+
+<!-- core -->
+<script src="src/core/gfx.js"></script>
+<script src="src/core/font.js"></script>
+<script src="src/core/art.js"></script>
+<script src="src/core/input.js"></script>
+<script src="src/core/audio.js"></script>
+<script src="src/core/save.js"></script>
+
+<!-- data -->
+<script src="src/data/sprites.js"></script>
+<script src="src/data/tiles.js"></script>
+<script src="src/data/text.js"></script>
+<script src="src/data/caves.js"></script>
+<script src="src/data/overworld.js"></script>
+<script src="src/data/dungeons.js"></script>
+
+<!-- world -->
+<script src="src/world/world.js"></script>
+
+<!-- entities -->
+<script src="src/entity/projectile.js"></script>
+<script src="src/entity/pickup.js"></script>
+<script src="src/entity/enemy.js"></script>
+<script src="src/entity/player.js"></script>
+<script src="src/entity/boss.js"></script>
+
+<!-- play, interface, loop -->
+<script src="src/world/play.js"></script>
+<script src="src/ui/hud.js"></script>
+<script src="src/ui/menu.js"></script>
+<script src="src/core/loop.js"></script>
+
+</body>
+</html>
