@@ -1,0 +1,89 @@
+/* Ashvale — page chrome.
+ * The canvas does the work; this just centres it on a dark ground and keeps the
+ * pixels square at every zoom level. */
+
+:root {
+  color-scheme: dark;
+  --ground: #0b0910;
+  --ash: #6d6b7d;
+  --bone: #c4bda9;
+  --ember: #ff7a2f;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--ground);
+  color: var(--bone);
+  font: 12px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  overflow: hidden;
+}
+
+/* A faint warmth from the middle, like something is lit off-screen. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 42%, #1b1626 0%, #0b0910 62%);
+  z-index: -1;
+}
+
+#stage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 8px;
+}
+
+#screen {
+  display: block;
+  /* Set in JS to an integer multiple of 256x240 so pixels stay square. */
+  width: 768px;
+  height: 720px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: #000;
+  border: 2px solid #2b2b3d;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px #000, 0 18px 60px rgba(0, 0, 0, 0.8);
+  outline: none;
+  touch-action: none;
+}
+
+#screen:focus-visible { border-color: var(--ember); }
+
+#boot {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.18em;
+  color: var(--ash);
+  background: var(--ground);
+  z-index: 10;
+}
+
+#keys {
+  margin: 0;
+  color: #4a4a5e;
+  letter-spacing: 0.06em;
+  text-align: center;
+  max-width: 760px;
+}
+
+#keys b {
+  color: var(--ash);
+  font-weight: 600;
+}
+
+/* On a short window the caption is the first thing to go. */
+@media (max-height: 560px) {
+  #keys { display: none; }
+  #stage { gap: 0; }
+}
